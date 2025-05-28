@@ -1,16 +1,16 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class player_move : MonoBehaviour
 {
-    //Start‚Ì’†‚ÅéŒ¾‚µ‚½‚à‚Ì‚Í‘¼‚Ì‚Æ‚±‚ë‚Åg—p‚Å‚«‚È‚¢c‚Ì‚ÅÅ‰‚ÉéŒ¾‚µ‚Ä‚¨‚­
-    //Å‰‚ÉRigidBody2D‚Æ‘‚¢‚Ä‚ê‚ÎGetComponent‚Ì•K—v‚Í‚È‚¢HH
+    //Startã®ä¸­ã§å®£è¨€ã—ãŸã‚‚ã®ã¯ä»–ã®ã¨ã“ã‚ã§ä½¿ç”¨ã§ããªã„â€¦ã®ã§æœ€åˆã«å®£è¨€ã—ã¦ãŠã
+    //æœ€åˆã«RigidBody2Dã¨æ›¸ã„ã¦ã‚Œã°GetComponentã®å¿…è¦ã¯ãªã„ï¼Ÿï¼Ÿ
     private Rigidbody2D rb;
     [SerializeField] float speed = 3.0f;
 
 
     void Start()
     {
-        //‚±‚ê‚ğ‘‚©‚È‚¢‚ÆA‰½‚Ìƒf[ƒ^‚à“ü‚Á‚Ä‚È‚¢‚à‚Ì‚ğŒÄ‚Ño‚·‚±‚Æ‚É‚È‚éB
+        //ã“ã‚Œã‚’æ›¸ã‹ãªã„ã¨ã€ä½•ã®ãƒ‡ãƒ¼ã‚¿ã‚‚å…¥ã£ã¦ãªã„ã‚‚ã®ã‚’å‘¼ã³å‡ºã™ã“ã¨ã«ãªã‚‹ã€‚
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -20,23 +20,28 @@ public class player_move : MonoBehaviour
 
     }
 
-    //•¨—‰‰ZŒn‚ÍFixedUpdate‚Ì’†‚Å‚â‚é‚Ì‚ªˆê”Ê“I
+    //ç‰©ç†æ¼”ç®—ç³»ã¯FixedUpdateã®ä¸­ã§ã‚„ã‚‹ã®ãŒä¸€èˆ¬çš„
     private void FixedUpdate()
     {
-        //¶‰E“ü—ÍƒL[‚ğ‰Ÿ‚µ‚½‚Ì’l‚ğ‘ã“ü
+        //å·¦å³å…¥åŠ›ã‚­ãƒ¼ã‚’æŠ¼ã—ãŸæ™‚ã®å€¤ã‚’ä»£å…¥
         float horizontalKey = Input.GetAxis("Horizontal");
 
-        //‰EƒL[
-        //new‚ÅA’¼Ú‘¬‚³‚ğ‘‚«Š·‚¦‚Ä‚¢‚éII
-        //A‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìb‚Ìî•ñ‚ª“¾‚½‚¢A.b‚Åæ“¾
+        //å³ã‚­ãƒ¼
+        //newã§ã€ç›´æ¥é€Ÿã•ã‚’æ›¸ãæ›ãˆã¦ã„ã‚‹ï¼ï¼
+        //Aã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®bã®æƒ…å ±ãŒå¾—ãŸã„æ™‚A.bã§å–å¾—
+        //transformã¯(1.0)ã®ãƒ™ã‚¯ãƒˆãƒ«ã‚’æŒ‡ã™ï¼
         if (horizontalKey > 0)
         {
             rb.velocity = new Vector2(speed,rb.velocity.y);
+            //ã‚‚ã—ãã¯
+            //rb.AddForce(transform.right*10.0f);
         }
-        //¶ƒL[
+        //å·¦ã‚­ãƒ¼
         else if(horizontalKey < 0) 
         {
            rb.velocity=new Vector2(-speed,rb.velocity.y);
+            //ã‚‚ã—ãã¯
+            //rb.AddForce(transform.left*10.0f);
         }
         else
         {
