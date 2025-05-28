@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scene_Changer : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Scene_Changer : MonoBehaviour
         if (collidedObjectName == "human" && Input.GetKeyDown(KeyCode.UpArrow))
         {
             Debug.Log("移動");
-
+            SceneManager.LoadScene("SceneChange_test");
         }
     }
 
